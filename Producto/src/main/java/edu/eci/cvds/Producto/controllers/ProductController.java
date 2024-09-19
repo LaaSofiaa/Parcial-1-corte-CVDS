@@ -4,10 +4,7 @@ import edu.eci.cvds.Producto.domain.Product;
 import edu.eci.cvds.Producto.service.ProductInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,4 +21,11 @@ public class ProductController {
     @PostMapping
     public ResponseEntity<Product> postProduct(@RequestBody Product product){
         productInterface.addProduct(product);
-        return  ResponseEntity.ok(product);}}
+        return  ResponseEntity.ok(product);}
+
+    @PatchMapping ("/productos/{product}")
+    public ResponseEntity<Product> updateProduct(@PathVariable Product product){
+        productInterface.updateProduct(product);
+        return  ResponseEntity.ok(product);}
+
+}
