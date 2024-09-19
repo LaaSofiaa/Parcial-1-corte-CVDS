@@ -12,20 +12,27 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class ProductoApplicationTests {
 	private ProductService productService;
+
 	@Test
-	public void shouldAddLproduct(){
+	public void shouldAddLproduct() {
 		Product product = new Product("xbox", 100000, 5, "gaming");
 		List<Product> products = productService.addProduct(product);
-		assertEquals("xbox",product.getName());
+		assertEquals("xbox", product.getName());
 	}
+
 	@Test
-	public void shouldNotAddProduct(){
+	public void shouldNotAddProduct() {
 		Product product = new Product("pc", null, 5, "gaming");
 		List<Product> products = productService.addProduct(product);
 		assertNotNull(product.getPrice());
 	}
 
-	
+	public void shouldAddProducts() {
+		Product product1 = new Product("pc", null, 5, "gaming");
+		Product product2 = new Product("xbox", 100000, 5, "gaming");
+		productService.addProduct(product1);
+		productService.addProduct(product2);
 
 
+	}
 }
