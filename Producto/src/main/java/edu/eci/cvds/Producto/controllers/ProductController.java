@@ -11,10 +11,11 @@ import java.util.Arrays;
 import java.util.List;
 @RestController
 public class ProductController {
-    private List<Product> products  = new ArrayList<>(Arrays.asList(
+    /*private List<Product> products  = new ArrayList<>(Arrays.asList(
             new Product("PC", 12300,4,"tecnologia"),
             new Product("xbox",200000,5, "gamimg")
-    ));
+    ));*/
+
     @Autowired
     private ProductInterface productInterface;
 
@@ -23,7 +24,7 @@ public class ProductController {
         productInterface.addProduct(product);
         return  ResponseEntity.ok(product);}
 
-    @PatchMapping ("/productos/{product}")
+    @PatchMapping ("/{product}")
     public ResponseEntity<Product> updateProduct(@PathVariable Product product){
         productInterface.updateProduct(product);
         return  ResponseEntity.ok(product);}
